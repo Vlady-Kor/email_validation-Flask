@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Email DB</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+    <h1>Email Validation with DB</h1>
+    <h2>All Emails</h2>
+    <table>
+    {% for one_email in all_emails %}
+        <tr>
+            <td>{{one_email['email']}}</td>
+            <td>{{one_email['created_at']}}</td>
+        </tr>
+    {% endfor %}
+    </table>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{message}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+</body>
+</html>
